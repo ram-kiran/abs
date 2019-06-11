@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "LC_Azure_IR", "LC_Azure_IR\LC_Azure_IR.dtproj", "{D5532F11-B487-48C1-B055-2818AC0CE0FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5532F11-B487-48C1-B055-2818AC0CE0FD}.Development|Default.ActiveCfg = Development
+		{D5532F11-B487-48C1-B055-2818AC0CE0FD}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B72660E6-F5C8-489B-8CB9-C76956005D06}
+	EndGlobalSection
+EndGlobal

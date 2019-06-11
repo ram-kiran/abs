@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LC SF Connection Manager"
+  DTS:DTSID="{A24E1B1D-852E-4601-9E39-8493B1023A5D}"
+  DTS:CreationName="Salesforce (KingswaySoft)">
+  <DTS:ObjectData>
+    <SalesforceConnectionManager
+      ConnectionString="InstanceType=Sandbox;UserName=ram.kiran@atlassystems.com.partial;ServiceTimeout=120;ProxyMode=NoProxy;ProxyServer=;ProxyServerPort=0;ProxyUsername=;RetryOnIntermittentErrors=True">
+      <Password
+        Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0dXL11BTiUSjSMYjFm14sgAAAAACAAAAAAADZgAAwAAAABAAAAC9qkS2n5dZdKbdU8INyNUPAAAAAASAAACgAAAAEAAAAH5nlwU6BMaO0A29OhlTwQhgAAAAD+lG3rij71QJGs1W9swzMmgkf33ubuGech9ko3mVN30ay8QjOMXLZoJMqQjwajOypIBTD99J8UkW+ZRejZMn2NDJ+XRovFjqO3/l3b/zQV2prx3CrcgL40switZBXn17FAAAAEWWb1z0fsXbPnHsLKlEvL2PQCZ1</Password>
+      <SecurityToken
+        Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0dXL11BTiUSjSMYjFm14sgAAAAACAAAAAAADZgAAwAAAABAAAAD741liH/jHaOrzdl4H3J+iAAAAAASAAACgAAAAEAAAABqz0l7Tu/eVjThKTP7VyqpwAAAADajvTwnZbNSuDXzP3fRYDC2txHwZx1ZYWE/Z0Cuqc+9WQHfdQo75CjrBQ/R8dQXaIDA6BcpO9n/hzw1BI1ysR2uB6cwBSlM9oH/fDiO/C5hQQ2jFxkaySPJFpEHLOfG+h113oH1eGIZpmQ2l/SrzzRQAAADAq6Sg+PPwjxKOSRfMkUAYKDlCBA==</SecurityToken>
+    </SalesforceConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

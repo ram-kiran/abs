@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/11/2019 3:16:08 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ATLBLRLP-55"
+  DTS:CreatorName="ATLSS\rkiran"
+  DTS:DTSID="{E95EFAAC-B959-4F22-9259-D1338F573CC0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{1012C3CC-BC12-4588-B314-8EF3D992EE3C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Azure Blob Storage Connection Manager]"
+      DTS:CreationName="Azure Blob Storage (KingswaySoft)"
+      DTS:DTSID="{3187A16D-B181-452B-8496-C306A98B1A52}"
+      DTS:ObjectName="Azure Blob Storage Connection Manager">
+      <DTS:ObjectData>
+        <ConnectionManager
+          ConnectionString="UploadChunkSize=&quot;2 MB&quot;;ProxyMode=NoProxy;ProxyUsername=;ProxyServer=;ProxyServerPort=0;UseAzureStorageEmulator=True;AccountName=devstoreaccount1;UseHTTPS=True;StorageEndpointsDomain=core.windows.net;Timeout=120;RetryOnIntermittentErrors=True">
+          <AccessKey
+            Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0dXL11BTiUSjSMYjFm14sgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAeebjtwRwZ/vqIGeXexmFrAAAAAASAAACgAAAAEAAAABPUnQUcvp7xPJiko24eORa4AAAAc9YSxR1aM5ysRkFcvinWBrhMcDdPdLbo36e0jNqEAzizMxkLCRwCKt4JqUzmqzQsLVI92SW8sMNfAIBiMwszjRlPitz12DfMcoWMh7nWSM11jwt12/YuDv8VslVKoVpI1DB0BwOtfTSKtspusRCC4HdtCKfptfjpWgsI4Xvfk1XmzEMRcbZjUayCM/RW/W1hszX/Iv2+U+LjqGea1RSF8dX4UUGuNHLm3tCQQBKYX+iDHlUrgKFFpRQAAACupP5b5OONT9Wl8ndfA68B12jQYg</AccessKey>
+        </ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{52CE65D4-1636-49D5-B123-3617F1C83454}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Azure Blob Storage Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2011-2019 KingswaySoft Inc."
+              description="Extract data from Azure Blob Storage."
+              name="Azure Blob Storage Source"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the path to the AzureBlobStorage item to be downloaded"
+                  expressionType="Notify"
+                  name="SourceItemPath"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies what AzureBlobStorage Items to select and download base on the Item Path"
+                  expressionType="Notify"
+                  name="SelectionMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.AzureBlobStorage.SelectionMode">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="The maximum number of keys returned in the response body"
+                  expressionType="Notify"
+                  name="PageSize">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that metadata related to any current or previous Copy Blob operation should be included in the response."
+                  expressionType="Notify"
+                  name="IncludeCopy">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that snapshots should be included in the enumeration."
+                  expressionType="Notify"
+                  name="IncludeSnapshot">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that blob metadata be returned in the response."
+                  expressionType="Notify"
+                  name="IncludeMetadata">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that blobs for which blocks have been uploaded, but which have not been committed using Put Block List, be included in the response."
+                  expressionType="Notify"
+                  name="IncludeUncommittedBlob">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.AzureBlobStorage.AzureBlobStorageSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Azure Blob Storage Source.Connections[Azure Blob Storage (KingswaySoft)]"
+                  description="AzureBlobStorage"
+                  name="Azure Blob Storage (KingswaySoft)" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Azure Blob Storage Source.Outputs[Primary Output]"
+                  name="Primary Output">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Premium Excel Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2011-2019 KingswaySoft Inc."
+              description="Extract data from Excel."
+              name="Premium Excel Source"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the Worksheet to read from the Excel file."
+                  expressionType="Notify"
+                  name="WorkSheetName"></property>
+                <property
+                  dataType="System.String"
+                  description="The name of the range to read from the Excel file."
+                  expressionType="Notify"
+                  name="RangeName"></property>
+                <property
+                  dataType="System.String"
+                  description="Full path to the source file."
+                  expressionType="Notify"
+                  name="SourceFilePath"></property>
+                <property
+                  dataType="System.String"
+                  description="Password to open the Excel file."
+                  expressionType="Notify"
+                  name="OpenPassword"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Start row number."
+                  expressionType="Notify"
+                  name="StartRow">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Number of rows to read."
+                  expressionType="Notify"
+                  name="NumberOfRows">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify if and where the column names are in the Excel file."
+                  expressionType="Notify"
+                  name="ColumnNamesLocation"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.Excel.ColumnNamesLocation">1</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.ExcelSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Premium Excel Source.Connections[Premium File Connection Manager (KingswaySoft)]"
+                  connectionManagerID="Package.ConnectionManagers[Azure Blob Storage Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Azure Blob Storage Connection Manager]"
+                  description="Premium File Connection Manager (KingswaySoft)"
+                  name="Premium File Connection Manager (KingswaySoft)" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Premium Excel Source.Outputs[Default Output]"
+                  name="Default Output">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="524,121" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Data Flow Task\Premium Excel Source"
+          TopLeft="358,44" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Data Flow Task\Azure Blob Storage Source"
+          TopLeft="133,83" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

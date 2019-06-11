@@ -1,0 +1,3141 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/29/2019 1:21:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ATLBLRLP-55"
+  DTS:CreatorName="ATLSS\rkiran"
+  DTS:DTSID="{A07B6780-8F51-43FF-9F79-289A9EE66285}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="2_FirmCreation"
+  DTS:PackageType="5"
+  DTS:VersionBuild="103"
+  DTS:VersionGUID="{555F4B60-6C22-4F18-84D4-5DB66330F523}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Parent Firms Creation"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0CC38306-FFCE-4878-9AD1-122E064F973C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Parent Firms Creation">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Parent Firms Creation\Account ID and Name"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Salesforce Source; ZappySys LLC (c) All Rights Reserved; SSIS PowerPack; http://www.zappysys.com/support"
+              description="Salesforce Source can read data in bulk from Salesforce Service using Table or SOQL Query mode."
+              name="Account ID and Name"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="AccessMode for Salesforce Data"
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="ZappySys.Crm.Salesforce.SalesforceDataAccessMode, ZappySys.Crm, Version=1.0.2019.10521, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="LoggingMode determines how much information is logged during Package Execution. Set Logging mode to Debugging for maximum log."
+                  expressionType="Notify"
+                  name="LoggingMode"
+                  typeConverter="ZappySys.PowerPack.Common.LoggingMode, ZappySys.PowerPack140, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When you enable this property it will prefix timestamp before Log messages."
+                  expressionType="Notify"
+                  name="PrefixTimestamp">false</property>
+                <property
+                  dataType="System.Null"
+                  expressionType="Notify"
+                  name="SelfRef"
+                  typeConverter="NOTBROWSABLE" />
+                <property
+                  dataType="System.String"
+                  description="Object name from where you want to read data. This option only used when AccessMode=Table"
+                  expressionType="Notify"
+                  name="TableName"
+                  typeConverter="ZappySys.PowerPack.Converters.TableEditor,ZappySys.PowerPack140.UI,Version=1.0.0.0,Culture=neutral,PublicKeyToken=1903265a93eae502">Account</property>
+                <property
+                  dataType="System.Int32"
+                  description="How many rows you want to fetch in each request."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.String"
+                  description="Crm query to read data. This option only used when AccessMode=Query"
+                  expressionType="Notify"
+                  name="Query"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum number of rows to fetch from source. 0=Unlimited"
+                  expressionType="Notify"
+                  name="MaxRows">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this to true if you want to read deleted records"
+                  expressionType="Notify"
+                  name="IncludeDeleted">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to convert input date/time string / variable values (For query mode only)"
+                  expressionType="Notify"
+                  name="InputDateTimeConversionMode"
+                  typeConverter="ZappySys.Common.Data.DateTimeConversionMode, ZappySys.Common, Version=1.0.2019.10521, Culture=neutral, PublicKeyToken=1903265a93eae502">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to convert output date/time coming from source (e.g. If CRM is sending date in UTC you may automatically convert it to Local DateTime using this option)"
+                  expressionType="Notify"
+                  name="OutputDateTimeConversionMode"
+                  typeConverter="ZappySys.Common.Data.DateTimeConversionMode, ZappySys.Common, Version=1.0.2019.10521, Culture=neutral, PublicKeyToken=1903265a93eae502">1</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">ZappySys.SalesforceSource</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Parent Firms Creation\Account ID and Name.Connections[ZS-SALESFORCE]"
+                  connectionManagerID="{C58BE939-34E8-4B72-9783-67038A558863}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce 1]"
+                  description="Runtime connection for this component"
+                  name="ZS-SALESFORCE" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput]"
+                  errorOrTruncationOperation="Error"
+                  errorRowDisposition="FailComponent"
+                  name="SalesforceSourceOutput"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].Columns[Id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].Columns[Name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].Columns[Name]"
+                      name="Name" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[MasterRecordId]"
+                      dataType="wstr"
+                      length="18"
+                      name="MasterRecordId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="40"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[RecordTypeId]"
+                      dataType="wstr"
+                      length="18"
+                      name="RecordTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ParentId]"
+                      dataType="wstr"
+                      length="18"
+                      name="ParentId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingStreet]"
+                      dataType="wstr"
+                      length="255"
+                      name="BillingStreet" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingCity]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingCity" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingState]"
+                      dataType="wstr"
+                      length="80"
+                      name="BillingState" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingPostalCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="BillingPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingCountry]"
+                      dataType="wstr"
+                      length="80"
+                      name="BillingCountry" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingStateCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="BillingStateCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingCountryCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="BillingCountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingLatitude]"
+                      dataType="r8"
+                      name="BillingLatitude" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingLongitude]"
+                      dataType="r8"
+                      name="BillingLongitude" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingGeocodeAccuracy]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingGeocodeAccuracy" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[BillingAddress]"
+                      dataType="nText"
+                      name="BillingAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingStreet]"
+                      dataType="wstr"
+                      length="255"
+                      name="ShippingStreet" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingCity]"
+                      dataType="wstr"
+                      length="40"
+                      name="ShippingCity" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingState]"
+                      dataType="wstr"
+                      length="80"
+                      name="ShippingState" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingPostalCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="ShippingPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingCountry]"
+                      dataType="wstr"
+                      length="80"
+                      name="ShippingCountry" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingStateCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="ShippingStateCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingCountryCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="ShippingCountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingLatitude]"
+                      dataType="r8"
+                      name="ShippingLatitude" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingLongitude]"
+                      dataType="r8"
+                      name="ShippingLongitude" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingGeocodeAccuracy]"
+                      dataType="wstr"
+                      length="40"
+                      name="ShippingGeocodeAccuracy" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[ShippingAddress]"
+                      dataType="nText"
+                      name="ShippingAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="40"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="40"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="40"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Website]"
+                      dataType="wstr"
+                      length="255"
+                      name="Website" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[PhotoUrl]"
+                      dataType="wstr"
+                      length="255"
+                      name="PhotoUrl" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Sic]"
+                      dataType="wstr"
+                      length="20"
+                      name="Sic" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Industry]"
+                      dataType="wstr"
+                      length="40"
+                      name="Industry" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[AnnualRevenue]"
+                      dataType="r8"
+                      name="AnnualRevenue" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[NumberOfEmployees]"
+                      dataType="i4"
+                      name="NumberOfEmployees" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Ownership]"
+                      dataType="wstr"
+                      length="40"
+                      name="Ownership" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[TickerSymbol]"
+                      dataType="wstr"
+                      length="20"
+                      name="TickerSymbol" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Description]"
+                      dataType="nText"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Rating]"
+                      dataType="wstr"
+                      length="40"
+                      name="Rating" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Site]"
+                      dataType="wstr"
+                      length="80"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CurrencyIsoCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="CurrencyIsoCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[LastActivityDate]"
+                      dataType="dbDate"
+                      name="LastActivityDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Jigsaw]"
+                      dataType="wstr"
+                      length="20"
+                      name="Jigsaw" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[JigsawCompanyId]"
+                      dataType="wstr"
+                      length="20"
+                      name="JigsawCompanyId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[AccountSource]"
+                      dataType="wstr"
+                      length="40"
+                      name="AccountSource" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[SicDesc]"
+                      dataType="wstr"
+                      length="80"
+                      name="SicDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Alternate_Names__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Alternate_Names__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Billing_Address_Text__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="CT_PE__Billing_Address_Text__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Company_Tier__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Company_Tier__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Data_Governance_Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Data_Governance_Status__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Last_Activity_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Last_Activity_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Last_Call_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Last_Call_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Last_Email_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Last_Email_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Last_Meeting_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Last_Meeting_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Migration_Id__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Migration_Id__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Migration_Source__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Migration_Source__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Next_Activity_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Next_Activity_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Next_Call_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Next_Call_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Next_Email_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Next_Email_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Next_Meeting_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Next_Meeting_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Primary_Coverage__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Primary_Coverage__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Primary_Region__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Primary_Region__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Region__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Region__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Short_Name__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Short_Name__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Total_Activities__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Activities__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Total_Full_Hierarchy_Influenced__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Full_Hierarchy_Influenced__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Total_Influenced__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Influenced__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Ultimate_Parent_Account_Id__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="CT_PE__Ultimate_Parent_Account_Id__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Ultimate_Parent_Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Ultimate_Parent_Account__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Website_Domain_Match_Name__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="CT_PE__Website_Domain_Match_Name__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Website_Domain_Name__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Website_Domain_Name__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Total_Commitment_Amount__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Commitment_Amount__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[CT_PE__Total_Finaccount_Amount__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Finaccount_Amount__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Area_of_Interest__c]"
+                      dataType="nText"
+                      name="Area_of_Interest__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Last_Interaction_Date__c]"
+                      dataType="dbDate"
+                      name="Last_Interaction_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Last_Call_Date__c]"
+                      dataType="dbDate"
+                      name="Last_Call_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Last_Email_Date__c]"
+                      dataType="dbDate"
+                      name="Last_Email_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Interested_in_IPO_Placement__c]"
+                      dataType="bool"
+                      name="Interested_in_IPO_Placement__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Priority__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Priority__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[AUM__c]"
+                      dataType="r8"
+                      name="AUM__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Reliability__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Reliability__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Co_Investment_Notes__c]"
+                      dataType="nText"
+                      name="Co_Investment_Notes__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[IPO_Placement_Notes__c]"
+                      dataType="nText"
+                      name="IPO_Placement_Notes__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Deal__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Deal__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Number_of_Deals__c]"
+                      dataType="r8"
+                      name="Number_of_Deals__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Company_Id_18__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="Company_Id_18__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Founding_Date__c]"
+                      dataType="dbDate"
+                      name="Founding_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Number_of_Deals12__c]"
+                      dataType="r8"
+                      name="Number_of_Deals12__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Company_Type__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Company_Type__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Last_Deal_Sourced__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Last_Deal_Sourced__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Total_Amount_Invested__c]"
+                      dataType="r8"
+                      name="Total_Amount_Invested__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Most_Recent_Investment_Date__c]"
+                      dataType="dbDate"
+                      name="Most_Recent_Investment_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[cbit__ClearbitDomain__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="cbit__ClearbitDomain__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Number_of__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Number_of__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[SourceScrub_Link_2__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="SourceScrub_Link_2__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[cbit__ClearbitReady__c]"
+                      dataType="bool"
+                      name="cbit__ClearbitReady__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[cbit__Clearbit__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="cbit__Clearbit__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Locations__c]"
+                      dataType="r8"
+                      name="Locations__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[cbit__CreatedByClearbit__c]"
+                      dataType="bool"
+                      name="cbit__CreatedByClearbit__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[L_Catterton_Interest__c]"
+                      dataType="nText"
+                      name="L_Catterton_Interest__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Total_Open_Opportunities__c]"
+                      dataType="r8"
+                      name="Total_Open_Opportunities__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Co_Investment_Exclusion__c]"
+                      dataType="nText"
+                      name="Co_Investment_Exclusion__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Co_Investment_Interests__c]"
+                      dataType="nText"
+                      name="Co_Investment_Interests__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Capability__c]"
+                      dataType="nText"
+                      name="Capability__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Do_Not_Solicit__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Do_Not_Solicit__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Allocation_to_PE__c]"
+                      dataType="r8"
+                      name="Allocation_to_PE__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Average_Bite_Size__c]"
+                      dataType="r8"
+                      name="Average_Bite_Size__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Information_As_Of__c]"
+                      dataType="dbDate"
+                      name="Information_As_Of__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Sweetspot__c]"
+                      dataType="r8"
+                      name="Sweetspot__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Min_Co_Investment_Commitment__c]"
+                      dataType="r8"
+                      name="Min_Co_Investment_Commitment__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Max_Co_Investment_Commitment__c]"
+                      dataType="r8"
+                      name="Max_Co_Investment_Commitment__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Last_Meeting_Date__c]"
+                      dataType="dbDate"
+                      name="Last_Meeting_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].ExternalColumns[Latest_Employee_Count__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Latest_Employee_Count__c" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output]"
+                  isErrorOut="true"
+                  name="SalesforceSource Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[ErrorColumnName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[ErrorColumnName]"
+                      name="ErrorColumnName" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSource Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Adding Company Type column - Hardcoded"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Output].Columns[CompanyType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="18"
+                      lineageId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Output].Columns[CompanyType]"
+                      name="CompanyType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"0126A000000YhGEQA0"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"0126A000000YhGEQA0"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Parent Firms Creation\Azure Blob CSV File Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Azure Blob CSV File Source; ZappySys LLC (c) All Rights Reserved; SSIS PowerPack; http://www.zappysys.com/support"
+              description="The Csv source for Azure Storage can be used to parse/read Csv files stored on Azure Blob Storage Service without downloading on local disk."
+              name="Azure Blob CSV File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="LoggingMode determines how much information is logged during Package Execution. Set Logging mode to Debugging for maximum log."
+                  expressionType="Notify"
+                  name="LoggingMode"
+                  typeConverter="ZappySys.PowerPack.Common.LoggingMode, ZappySys.PowerPack140, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When you enable this property it will prefix timestamp before Log messages."
+                  expressionType="Notify"
+                  name="PrefixTimestamp">false</property>
+                <property
+                  dataType="System.Null"
+                  expressionType="Notify"
+                  name="SelfRef"
+                  typeConverter="NOTBROWSABLE" />
+                <property
+                  dataType="System.Boolean"
+                  description="Treat empty string as NULL for any numeric data types"
+                  expressionType="Notify"
+                  name="TreatBlankNumberAsNull">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Treat empty string as NULL for bool data types"
+                  expressionType="Notify"
+                  name="TreatBlankBoolAsNull">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Treat empty string as NULL for any date/time data types"
+                  expressionType="Notify"
+                  name="TreatBlankDateAsNull">true</property>
+                <property
+                  dataType="System.String"
+                  description="Column delimiter for data you like to parse. To use custom delimiter enter 4-digit hex string starting with \x (e.g. you can enter \x0009 for Tab character). For multiple characters repeat group. e.g. \x00090009 if you need two tabs."
+                  expressionType="Notify"
+                  name="ColumnDelimiter">,</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Column delimiter for data you like to parse."
+                  expressionType="Notify"
+                  name="HasColumnHeaderRow">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Throw error if record has different number of columns than actual columns detected based on first row"
+                  expressionType="Notify"
+                  name="ThrowErrorOnColumnCountMismatch">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Throw error if no record found or file is blank"
+                  expressionType="Notify"
+                  name="ThrowErrorOnNoRecordFound">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Allow comment lines which can be skipped by parser. When comment line found row is skipped. See CommentCharacter to configure first character for commented line."
+                  expressionType="Notify"
+                  name="AllowComment">false</property>
+                <property
+                  dataType="System.String"
+                  description="Allow lines with comment. When comment line found row is skipped. See LineCommentCharacter property to configure first character for commented line."
+                  expressionType="Notify"
+                  name="CommentCharacter">#</property>
+                <property
+                  dataType="System.Int32"
+                  description="Total data rows you like to skip (after header row)"
+                  expressionType="Notify"
+                  name="SkipRows">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Total rows you like to skip before header row. If its header less file then skip initial N rows (before any data row)."
+                  expressionType="Notify"
+                  name="SkipHeaderCommentRows">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When this option is enabled, blank lines are skipped."
+                  expressionType="Notify"
+                  name="IgnoreBlankLines">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When this option is enabled, any row with empty values in all fields is skipped (e.g. , , , , )."
+                  expressionType="Notify"
+                  name="SkipEmptyRecords">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Trim column names if whitespace found before or after name"
+                  expressionType="Notify"
+                  name="TrimHeaders">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Trim value for each field if whitespace found before or after"
+                  expressionType="Notify"
+                  name="TrimFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Ignore quote character and consider it part of actual value"
+                  expressionType="Notify"
+                  name="IgnoreQuotes">false</property>
+                <property
+                  dataType="System.String"
+                  description="Quote character for quoted values."
+                  expressionType="Notify"
+                  name="QuoteCharacter">"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Encoding of source file"
+                  expressionType="Notify"
+                  name="Encoding"
+                  typeConverter="ZappySys.Common.EncodingType, ZappySys.Common, Version=1.0.2019.10521, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.String"
+                  description="Character set for text (e.g. utf-8 )"
+                  expressionType="Notify"
+                  name="CharacterSet"></property>
+                <property
+                  dataType="System.String"
+                  description="Culture code (e.g. pt-BT). This helps to parse culture specific number formats (e.g. In some culture you may have comma rather than decimal points 0.1 can be 0,1)"
+                  expressionType="Notify"
+                  name="Culture"></property>
+                <property
+                  dataType="System.String"
+                  description="JSON file file path (e.g. c:\data\myfile.json) or pattern to process multiple files (e.g. c:\data\*.json)"
+                  expressionType="Notify"
+                  name="DirectPath"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">csv-files/Firm - Parent Firm_97_2003_5_Records_Test.csv</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Include files from sub folders too."
+                  expressionType="Notify"
+                  name="Recursive">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="By default process stops with error if specified local file is not found. Set this property to true if you wish to continue rather than throwing file not found error."
+                  expressionType="Notify"
+                  name="ContinueOnFileNotFoundError">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum JSON records to fetch. Set this value to 0 for all records"
+                  expressionType="Notify"
+                  name="MaxRows">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Compression format for source file (e.g. gzip, zip)"
+                  expressionType="Notify"
+                  name="FileCompressionType"
+                  typeConverter="ZappySys.Common.FileCompressionType, ZappySys.Common, Version=1.0.2019.10521, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how custom date formatted strings are parsed when reading JSON."
+                  expressionType="Notify"
+                  name="DateFormatString"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how date formatted strings, e.g. Date(1198908717056) and 2012-03-21T05:40Z, are parsed when reading JSON."
+                  expressionType="Notify"
+                  name="DateParseHandling"
+                  typeConverter="ZappySys.Common.DateParseHandling, ZappySys.Common, Version=1.0.2019.10521, Culture=neutral, PublicKeyToken=1903265a93eae502">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true if you want to output FilePath. This option is ignored when you consume DirectValue or data from Url rather than local files. Output column name will be __FilePath"
+                  expressionType="Notify"
+                  name="OutputFilePath">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true if you want to output FileName. This option is ignored when you consume DirectValue or data from Url rather than local files. Output column name will be __FileName"
+                  expressionType="Notify"
+                  name="OutputFileName">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When this property is true then Column is converted to Row. Pivoted names will appear under  Pivot_Name column and values will appear under Pivot_Value field."
+                  expressionType="Notify"
+                  name="EnablePivot">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Metadata scan mode controls how data type and length is determined. By default few records scanned to determine datatype/length. Changing ScanMode affects length/datatype accuracy."
+                  expressionType="Notify"
+                  name="MetaDataScanMode"
+                  typeConverter="ZappySys.Common.Data.MetaDataScanMode, ZappySys.Common, Version=1.0.2019.10521, Culture=neutral, PublicKeyToken=1903265a93eae502">4</property>
+                <property
+                  dataType="System.Int32"
+                  description="Length for all string column. This option is only valid for MetaDataScanMode=Custom"
+                  expressionType="Notify"
+                  name="MetaDataCustomLength">1000</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">ZappySys.AzureCsvSource</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Connections[Connection]"
+                  connectionManagerID="{87EEFCFE-D97A-4843-A88C-B00BDD317BD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Microsoft Azure Blob Storage 1]"
+                  description="Connection manager for authentication (e.g. HTTP or OAuth Connection)"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput]"
+                  errorOrTruncationOperation="Error"
+                  errorRowDisposition="FailComponent"
+                  name="AzureCsvSourceOutput"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Investor]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[(Do Not Modify) Investor]"
+                      length="144"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Investor]"
+                      name="(Do Not Modify) Investor" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Row Checksum]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[(Do Not Modify) Row Checksum]"
+                      length="352"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Row Checksum]"
+                      name="(Do Not Modify) Row Checksum" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Modified On]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[(Do Not Modify) Modified On]"
+                      length="60"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Modified On]"
+                      name="(Do Not Modify) Modified On" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Firm Name (Firm) (Firm)]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[Firm Name (Firm) (Firm)]"
+                      length="272"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Firm Name (Firm) (Firm)]"
+                      name="Firm Name (Firm) (Firm)" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Short Name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[Short Name]"
+                      length="88"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Short Name]"
+                      name="Short Name" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Parent Firm (Firm) (Firm)]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[Parent Firm (Firm) (Firm)]"
+                      length="80"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Parent Firm (Firm) (Firm)]"
+                      name="Parent Firm (Firm) (Firm)" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Include in Salesforce?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[Include in Salesforce?]"
+                      length="12"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Include in Salesforce?]"
+                      name="Include in Salesforce?" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[(Do Not Modify) Investor]"
+                      dataType="wstr"
+                      length="144"
+                      name="(Do Not Modify) Investor" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[(Do Not Modify) Row Checksum]"
+                      dataType="wstr"
+                      length="352"
+                      name="(Do Not Modify) Row Checksum" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[(Do Not Modify) Modified On]"
+                      dataType="wstr"
+                      length="60"
+                      name="(Do Not Modify) Modified On" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[Firm Name (Firm) (Firm)]"
+                      dataType="wstr"
+                      length="272"
+                      name="Firm Name (Firm) (Firm)" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[Short Name]"
+                      dataType="wstr"
+                      length="88"
+                      name="Short Name" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[Parent Firm (Firm) (Firm)]"
+                      dataType="wstr"
+                      length="80"
+                      name="Parent Firm (Firm) (Firm)" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[Include in Salesforce?]"
+                      dataType="wstr"
+                      length="12"
+                      name="Include in Salesforce?" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].ExternalColumns[__FileName]"
+                      dataType="wstr"
+                      length="600"
+                      name="__FileName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output]"
+                  isErrorOut="true"
+                  name="AzureCsvSource Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[(Do Not Modify) Investor]"
+                      dataType="wstr"
+                      length="144"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[(Do Not Modify) Investor]"
+                      name="(Do Not Modify) Investor" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[(Do Not Modify) Row Checksum]"
+                      dataType="wstr"
+                      length="352"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[(Do Not Modify) Row Checksum]"
+                      name="(Do Not Modify) Row Checksum" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[(Do Not Modify) Modified On]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[(Do Not Modify) Modified On]"
+                      name="(Do Not Modify) Modified On" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[Firm Name (Firm) (Firm)]"
+                      dataType="wstr"
+                      length="272"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[Firm Name (Firm) (Firm)]"
+                      name="Firm Name (Firm) (Firm)" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[Short Name]"
+                      dataType="wstr"
+                      length="88"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[Short Name]"
+                      name="Short Name" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[Parent Firm (Firm) (Firm)]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[Parent Firm (Firm) (Firm)]"
+                      name="Parent Firm (Firm) (Firm)" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[Include in Salesforce?]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[Include in Salesforce?]"
+                      name="Include in Salesforce?" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[ErrorColumnName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[ErrorColumnName]"
+                      name="ErrorColumnName" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSource Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Parent Firms Creation\Companies to be created"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Companies to be created"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Parent Firms Creation\Companies to be created.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Companies to be created.Inputs[Conditional Split Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      lineageId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\Companies to be created.Outputs[CompanyName]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="CompanyName"
+                  synchronousInputId="Package\Parent Firms Creation\Companies to be created.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[Id]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Id)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Companies to be created.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Parent Firms Creation\Companies to be created.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Companies to be created.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Parent Firms Creation\Companies to be created.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Companies to be created.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Companies to be created.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Companies to be created.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Companies to be created.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Parent Firms Creation\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Parent Firms Creation\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Conditional Split.Inputs[Conditional Split Input].Columns[Include in Salesforce?]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Include in Salesforce?"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Include in Salesforce?]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\Conditional Split.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\Parent Firms Creation\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Include in Salesforce?]} == "Yes"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">[Include in Salesforce?] == "Yes"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Parent Firms Creation\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Parent Firms Creation\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Parent Firms Creation\List of companies with IDs if exists"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="List of companies with IDs if exists"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Left Input].Columns[Parent Firm (Firm) (Firm)]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Parent Firm (Firm) (Firm)"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[Parent Firm (Firm) (Firm)]" />
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Left Input].Columns[CompanyType]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="CompanyType"
+                      lineageId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Output].Columns[CompanyType]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Right Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Parent Firms Creation\Sort by Name.Outputs[Sort Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Right Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      lineageId="Package\Parent Firms Creation\Sort by Name.Outputs[Sort Output].Columns[Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[Name]"
+                      name="Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Right Input].Columns[Name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[Id]"
+                      name="Id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Right Input].Columns[Id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[CompanyType]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[CompanyType]"
+                      name="CompanyType">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Left Input].Columns[CompanyType]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[Parent Firm (Firm) (Firm)]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[Parent Firm (Firm) (Firm)]"
+                      name="Parent Firm (Firm) (Firm)"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Left Input].Columns[Parent Firm (Firm) (Firm)]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Replacing Nulls or Empty Strings in Company with Leagle entity"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Inputs[Derived Column Input].Columns[Firm Name (Firm) (Firm)]"
+                      cachedDataType="wstr"
+                      cachedLength="272"
+                      cachedName="Firm Name (Firm) (Firm)"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Firm Name (Firm) (Firm)]" />
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Inputs[Derived Column Input].Columns[Parent Firm (Firm) (Firm)]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Parent Firm (Firm) (Firm)"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Parent Firm (Firm) (Firm)]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Parent Firm (Firm) (Firm)]}) || [LEN](#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Parent Firm (Firm) (Firm)]}) == 0 ? #{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Firm Name (Firm) (Firm)]} : #{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Parent Firm (Firm) (Firm)]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL([Parent Firm (Firm) (Firm)]) || LEN([Parent Firm (Firm) (Firm)]) == 0 ? [Firm Name (Firm) (Firm)] : [Parent Firm (Firm) (Firm)]</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Parent Firms Creation\Salesforce Destination 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Salesforce Destination; ZappySys LLC (c) All Rights Reserved; SSIS PowerPack; http://www.zappysys.com/support"
+              description="Salesforce destination can be used to Bulk Insert, Bulk Update, Bulk Delete and Bulk Upsert data to Salesforce in bulk."
+              name="Salesforce Destination 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Action you like to perform"
+                  expressionType="Notify"
+                  name="Operation"
+                  typeConverter="ZappySys.Crm.Salesforce.SalesforceDataWriteMode, ZappySys.Crm, Version=1.0.2019.10521, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.String"
+                  description="ID of AssignmentRule you want to fire after new Lead or Case is created. This option is only valid for object type Lead and Case. To fire default assignment rule set UseDefaultAssignmentRule=true. To find out AssignmentRule ID, navigate to Assignment Rule page and get ID from URL (e.g. 01Q610000008e5x). For more information check this link https://help.salesforce.com/articleView?id=editing_assignment_rules.htm"
+                  expressionType="Notify"
+                  name="AssignmentRuleId"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="If you want to fire default Assignment rule after Case, Lead or Account, set this option to true. Either AssignmentRuleID or this option can be used. If you set this option to true and also specify AssignmentRuleID property then it may throw error"
+                  expressionType="Notify"
+                  name="UseDefaultAssignmentRule">false</property>
+                <property
+                  dataType="System.String"
+                  description="Key field based on which you want to perform Upsert action. This can be Id, External ID or IdLookup field type."
+                  expressionType="Notify"
+                  name="UpsertKeyField"
+                  typeConverter="ZappySys.PowerPack.Converters.KeyColumnsEditor,ZappySys.PowerPack140.UI,Version=1.0.0.0,Culture=neutral,PublicKeyToken=1903265a93eae502"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enable BULK API mode for large amount of data load. This mode may be slower for smaller set of data but if you have large amount of data then choose this mode to speedup data loading."
+                  expressionType="Notify"
+                  name="EnableBulkApiMode">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enables sending requests using multiple threads to speed up processing. Try to adjust MaxParallelThreads property to test performance gain."
+                  expressionType="Notify"
+                  name="EnableParallelProcessing">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Max Parallel Threads to use to process requests. This property is only valid if you set EnableParallelProcessing=True. Valid values are 1 to 40."
+                  expressionType="Notify"
+                  name="MaxParallelThreads">5</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum rows per job. This option is useful to avoid memory related errors when EnableBulkApiMode=true. Reduce or increase this limit as per you need. For example if you getting OutOfMemory error then reduce this count."
+                  expressionType="Notify"
+                  name="MaxRowsPerJob">500000</property>
+                <property
+                  dataType="System.Int32"
+                  description="LoggingMode determines how much information is logged during Package Execution. Set Logging mode to Debugging for maximum log."
+                  expressionType="Notify"
+                  name="LoggingMode"
+                  typeConverter="ZappySys.PowerPack.Common.LoggingMode, ZappySys.PowerPack140, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When you enable this property it will prefix timestamp before Log messages."
+                  expressionType="Notify"
+                  name="PrefixTimestamp">false</property>
+                <property
+                  dataType="System.Null"
+                  expressionType="Notify"
+                  name="SelfRef"
+                  typeConverter="NOTBROWSABLE" />
+                <property
+                  dataType="System.String"
+                  description="Object name from where you want to read data. This option only used when AccessMode=Table"
+                  expressionType="Notify"
+                  name="TableName"
+                  typeConverter="ZappySys.PowerPack.Converters.TableEditor,ZappySys.PowerPack140.UI,Version=1.0.0.0,Culture=neutral,PublicKeyToken=1903265a93eae502">Account</property>
+                <property
+                  dataType="System.Int32"
+                  description="How many rows you want to send in each request."
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to True if you wish to ignore fields if input value is NULL. By default target field is set to NULL if input value is NULL."
+                  expressionType="Notify"
+                  name="IgnoreFieldsIfInputNull">false</property>
+                <property
+                  dataType="System.String"
+                  description="Comma separated CRM entity field names which you like to set as NULL when input value is NULL. This option is ignored if IgnoreFieldsIfInputNull is not set to True."
+                  expressionType="Notify"
+                  name="FieldsToSetNullIfInputNull"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">ZappySys.SalesforceDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Parent Firms Creation\Salesforce Destination 1.Connections[ZS-SALESFORCE]"
+                  connectionManagerID="{C58BE939-34E8-4B72-9783-67038A558863}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce 1]"
+                  description="Runtime connection for this component"
+                  name="ZS-SALESFORCE" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="SalesforceDestinationInput"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].Columns[CompanyType]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="CompanyType"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[RecordTypeId]"
+                      lineageId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[CompanyType]" />
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].Columns[Parent Firm (Firm) (Firm)]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Parent Firm (Firm) (Firm)"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Name]"
+                      lineageId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output].Columns[Parent Firm (Firm) (Firm)]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[MasterRecordId]"
+                      dataType="wstr"
+                      length="18"
+                      name="MasterRecordId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="40"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[RecordTypeId]"
+                      dataType="wstr"
+                      length="18"
+                      name="RecordTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ParentId]"
+                      dataType="wstr"
+                      length="18"
+                      name="ParentId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingStreet]"
+                      dataType="wstr"
+                      length="255"
+                      name="BillingStreet" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingCity]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingCity" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingState]"
+                      dataType="wstr"
+                      length="80"
+                      name="BillingState" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingPostalCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="BillingPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingCountry]"
+                      dataType="wstr"
+                      length="80"
+                      name="BillingCountry" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingStateCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="BillingStateCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingCountryCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="BillingCountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingLatitude]"
+                      dataType="r8"
+                      name="BillingLatitude" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingLongitude]"
+                      dataType="r8"
+                      name="BillingLongitude" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingGeocodeAccuracy]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingGeocodeAccuracy" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[BillingAddress]"
+                      dataType="nText"
+                      name="BillingAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingStreet]"
+                      dataType="wstr"
+                      length="255"
+                      name="ShippingStreet" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingCity]"
+                      dataType="wstr"
+                      length="40"
+                      name="ShippingCity" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingState]"
+                      dataType="wstr"
+                      length="80"
+                      name="ShippingState" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingPostalCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="ShippingPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingCountry]"
+                      dataType="wstr"
+                      length="80"
+                      name="ShippingCountry" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingStateCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="ShippingStateCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingCountryCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="ShippingCountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingLatitude]"
+                      dataType="r8"
+                      name="ShippingLatitude" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingLongitude]"
+                      dataType="r8"
+                      name="ShippingLongitude" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingGeocodeAccuracy]"
+                      dataType="wstr"
+                      length="40"
+                      name="ShippingGeocodeAccuracy" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[ShippingAddress]"
+                      dataType="nText"
+                      name="ShippingAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="40"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="40"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="40"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Website]"
+                      dataType="wstr"
+                      length="255"
+                      name="Website" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[PhotoUrl]"
+                      dataType="wstr"
+                      length="255"
+                      name="PhotoUrl" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Sic]"
+                      dataType="wstr"
+                      length="20"
+                      name="Sic" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Industry]"
+                      dataType="wstr"
+                      length="40"
+                      name="Industry" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[AnnualRevenue]"
+                      dataType="r8"
+                      name="AnnualRevenue" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[NumberOfEmployees]"
+                      dataType="i4"
+                      name="NumberOfEmployees" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Ownership]"
+                      dataType="wstr"
+                      length="40"
+                      name="Ownership" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[TickerSymbol]"
+                      dataType="wstr"
+                      length="20"
+                      name="TickerSymbol" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Description]"
+                      dataType="nText"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Rating]"
+                      dataType="wstr"
+                      length="40"
+                      name="Rating" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Site]"
+                      dataType="wstr"
+                      length="80"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CurrencyIsoCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="CurrencyIsoCode" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[LastActivityDate]"
+                      dataType="dbDate"
+                      name="LastActivityDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Jigsaw]"
+                      dataType="wstr"
+                      length="20"
+                      name="Jigsaw" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[JigsawCompanyId]"
+                      dataType="wstr"
+                      length="20"
+                      name="JigsawCompanyId" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[AccountSource]"
+                      dataType="wstr"
+                      length="40"
+                      name="AccountSource" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[SicDesc]"
+                      dataType="wstr"
+                      length="80"
+                      name="SicDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Alternate_Names__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Alternate_Names__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Billing_Address_Text__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="CT_PE__Billing_Address_Text__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Company_Tier__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Company_Tier__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Data_Governance_Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Data_Governance_Status__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Last_Activity_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Last_Activity_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Last_Call_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Last_Call_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Last_Email_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Last_Email_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Last_Meeting_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Last_Meeting_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Migration_Id__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Migration_Id__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Migration_Source__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Migration_Source__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Next_Activity_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Next_Activity_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Next_Call_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Next_Call_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Next_Email_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Next_Email_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Next_Meeting_Lookup__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Next_Meeting_Lookup__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Primary_Coverage__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Primary_Coverage__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Primary_Region__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Primary_Region__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Region__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Region__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Short_Name__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Short_Name__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Total_Activities__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Activities__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Total_Full_Hierarchy_Influenced__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Full_Hierarchy_Influenced__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Total_Influenced__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Influenced__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Ultimate_Parent_Account_Id__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="CT_PE__Ultimate_Parent_Account_Id__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Ultimate_Parent_Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="CT_PE__Ultimate_Parent_Account__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Website_Domain_Match_Name__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="CT_PE__Website_Domain_Match_Name__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Website_Domain_Name__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="CT_PE__Website_Domain_Name__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Total_Commitment_Amount__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Commitment_Amount__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[CT_PE__Total_Finaccount_Amount__c]"
+                      dataType="r8"
+                      name="CT_PE__Total_Finaccount_Amount__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Area_of_Interest__c]"
+                      dataType="nText"
+                      name="Area_of_Interest__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Last_Interaction_Date__c]"
+                      dataType="dbDate"
+                      name="Last_Interaction_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Last_Call_Date__c]"
+                      dataType="dbDate"
+                      name="Last_Call_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Last_Email_Date__c]"
+                      dataType="dbDate"
+                      name="Last_Email_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Interested_in_IPO_Placement__c]"
+                      dataType="bool"
+                      name="Interested_in_IPO_Placement__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Priority__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Priority__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[AUM__c]"
+                      dataType="r8"
+                      name="AUM__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Reliability__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Reliability__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Co_Investment_Notes__c]"
+                      dataType="nText"
+                      name="Co_Investment_Notes__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[IPO_Placement_Notes__c]"
+                      dataType="nText"
+                      name="IPO_Placement_Notes__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Deal__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Deal__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Number_of_Deals__c]"
+                      dataType="r8"
+                      name="Number_of_Deals__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Company_Id_18__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="Company_Id_18__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Founding_Date__c]"
+                      dataType="dbDate"
+                      name="Founding_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Number_of_Deals12__c]"
+                      dataType="r8"
+                      name="Number_of_Deals12__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Company_Type__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Company_Type__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Last_Deal_Sourced__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Last_Deal_Sourced__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Total_Amount_Invested__c]"
+                      dataType="r8"
+                      name="Total_Amount_Invested__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Most_Recent_Investment_Date__c]"
+                      dataType="dbDate"
+                      name="Most_Recent_Investment_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[cbit__ClearbitDomain__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="cbit__ClearbitDomain__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Number_of__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Number_of__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[SourceScrub_Link_2__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="SourceScrub_Link_2__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[cbit__ClearbitReady__c]"
+                      dataType="bool"
+                      name="cbit__ClearbitReady__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[cbit__Clearbit__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="cbit__Clearbit__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Locations__c]"
+                      dataType="r8"
+                      name="Locations__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Status__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[cbit__CreatedByClearbit__c]"
+                      dataType="bool"
+                      name="cbit__CreatedByClearbit__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[L_Catterton_Interest__c]"
+                      dataType="nText"
+                      name="L_Catterton_Interest__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Total_Open_Opportunities__c]"
+                      dataType="r8"
+                      name="Total_Open_Opportunities__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Co_Investment_Exclusion__c]"
+                      dataType="nText"
+                      name="Co_Investment_Exclusion__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Co_Investment_Interests__c]"
+                      dataType="nText"
+                      name="Co_Investment_Interests__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Capability__c]"
+                      dataType="nText"
+                      name="Capability__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Do_Not_Solicit__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Do_Not_Solicit__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Allocation_to_PE__c]"
+                      dataType="r8"
+                      name="Allocation_to_PE__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Average_Bite_Size__c]"
+                      dataType="r8"
+                      name="Average_Bite_Size__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Information_As_Of__c]"
+                      dataType="dbDate"
+                      name="Information_As_Of__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Sweetspot__c]"
+                      dataType="r8"
+                      name="Sweetspot__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Min_Co_Investment_Commitment__c]"
+                      dataType="r8"
+                      name="Min_Co_Investment_Commitment__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Max_Co_Investment_Commitment__c]"
+                      dataType="r8"
+                      name="Max_Co_Investment_Commitment__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Last_Meeting_Date__c]"
+                      dataType="dbDate"
+                      name="Last_Meeting_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput].ExternalColumns[Latest_Employee_Count__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="Latest_Employee_Count__c" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[SalesforceDestination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="SalesforceDestination Error Output"
+                  synchronousInputId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[SalesforceDestination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[SalesforceDestination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[SalesforceDestination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[SalesforceDestination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[SalesforceDestination Error Output].Columns[ErrorColumnName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[SalesforceDestination Error Output].Columns[ErrorColumnName]"
+                      name="ErrorColumnName" />
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[SalesforceDestination Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[SalesforceDestination Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[New Records Output]"
+                  exclusionGroup="1"
+                  name="New Records Output"
+                  synchronousInputId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[New Records Output].Columns[CrmRecordId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="18"
+                      lineageId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[New Records Output].Columns[CrmRecordId]"
+                      name="CrmRecordId" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[Updated Records Output]"
+                  exclusionGroup="1"
+                  name="Updated Records Output"
+                  synchronousInputId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[Updated Records Output].Columns[CrmRecordId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="18"
+                      lineageId="Package\Parent Firms Creation\Salesforce Destination 1.Outputs[Updated Records Output].Columns[CrmRecordId]"
+                      name="CrmRecordId" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Parent Firms Creation\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Parent Firms Creation\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Sort.Inputs[Sort Input].Columns[(Do Not Modify) Investor]"
+                      cachedDataType="wstr"
+                      cachedLength="144"
+                      cachedName="(Do Not Modify) Investor"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Investor]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Sort.Inputs[Sort Input].Columns[(Do Not Modify) Row Checksum]"
+                      cachedDataType="wstr"
+                      cachedLength="352"
+                      cachedName="(Do Not Modify) Row Checksum"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Row Checksum]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Sort.Inputs[Sort Input].Columns[(Do Not Modify) Modified On]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="(Do Not Modify) Modified On"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Modified On]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Sort.Inputs[Sort Input].Columns[Firm Name (Firm) (Firm)]"
+                      cachedDataType="wstr"
+                      cachedLength="272"
+                      cachedName="Firm Name (Firm) (Firm)"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Firm Name (Firm) (Firm)]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Sort.Inputs[Sort Input].Columns[Short Name]"
+                      cachedDataType="wstr"
+                      cachedLength="88"
+                      cachedName="Short Name"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Short Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Sort.Inputs[Sort Input].Columns[Parent Firm (Firm) (Firm)]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Parent Firm (Firm) (Firm)"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Parent Firm (Firm) (Firm)]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Sort.Inputs[Sort Input].Columns[Include in Salesforce?]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Include in Salesforce?"
+                      lineageId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Include in Salesforce?]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[(Do Not Modify) Investor]"
+                      dataType="wstr"
+                      length="144"
+                      lineageId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[(Do Not Modify) Investor]"
+                      name="(Do Not Modify) Investor">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Investor]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[(Do Not Modify) Row Checksum]"
+                      dataType="wstr"
+                      length="352"
+                      lineageId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[(Do Not Modify) Row Checksum]"
+                      name="(Do Not Modify) Row Checksum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Row Checksum]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[(Do Not Modify) Modified On]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[(Do Not Modify) Modified On]"
+                      name="(Do Not Modify) Modified On">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[(Do Not Modify) Modified On]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[Firm Name (Firm) (Firm)]"
+                      dataType="wstr"
+                      length="272"
+                      lineageId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[Firm Name (Firm) (Firm)]"
+                      name="Firm Name (Firm) (Firm)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Firm Name (Firm) (Firm)]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[Short Name]"
+                      dataType="wstr"
+                      length="88"
+                      lineageId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[Short Name]"
+                      name="Short Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Short Name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[Parent Firm (Firm) (Firm)]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[Parent Firm (Firm) (Firm)]"
+                      name="Parent Firm (Firm) (Firm)"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Parent Firm (Firm) (Firm)]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[Include in Salesforce?]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Parent Firms Creation\Sort.Outputs[Sort Output].Columns[Include in Salesforce?]"
+                      name="Include in Salesforce?">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput].Columns[Include in Salesforce?]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Parent Firms Creation\Sort by Name"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by Name"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Parent Firms Creation\Sort by Name.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Sort by Name.Inputs[Sort Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].Columns[Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Parent Firms Creation\Sort by Name.Inputs[Sort Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      lineageId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].Columns[Id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Parent Firms Creation\Sort by Name.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Sort by Name.Outputs[Sort Output].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Parent Firms Creation\Sort by Name.Outputs[Sort Output].Columns[Name]"
+                      name="Name"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].Columns[Name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Parent Firms Creation\Sort by Name.Outputs[Sort Output].Columns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Parent Firms Creation\Sort by Name.Outputs[Sort Output].Columns[Id]"
+                      name="Id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput].Columns[Id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Parent Firms Creation.Paths[AzureCsvSourceOutput]"
+              endId="Package\Parent Firms Creation\Conditional Split.Inputs[Conditional Split Input]"
+              name="AzureCsvSourceOutput"
+              startId="Package\Parent Firms Creation\Azure Blob CSV File Source.Outputs[AzureCsvSourceOutput]" />
+            <path
+              refId="Package\Parent Firms Creation.Paths[Case 1]"
+              endId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Inputs[Derived Column Input]"
+              name="Case 1"
+              startId="Package\Parent Firms Creation\Conditional Split.Outputs[Case 1]" />
+            <path
+              refId="Package\Parent Firms Creation.Paths[CompanyName]"
+              endId="Package\Parent Firms Creation\Salesforce Destination 1.Inputs[SalesforceDestinationInput]"
+              name="CompanyName"
+              startId="Package\Parent Firms Creation\Companies to be created.Outputs[CompanyName]" />
+            <path
+              refId="Package\Parent Firms Creation.Paths[Derived Column Output]"
+              endId="Package\Parent Firms Creation\Sort.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Parent Firms Creation.Paths[Derived Column Output1]"
+              endId="Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Left Input]"
+              name="Derived Column Output"
+              startId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Parent Firms Creation.Paths[Merge Join Output]"
+              endId="Package\Parent Firms Creation\Companies to be created.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Parent Firms Creation\List of companies with IDs if exists.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Parent Firms Creation.Paths[SalesforceSourceOutput]"
+              endId="Package\Parent Firms Creation\Sort by Name.Inputs[Sort Input]"
+              name="SalesforceSourceOutput"
+              startId="Package\Parent Firms Creation\Account ID and Name.Outputs[SalesforceSourceOutput]" />
+            <path
+              refId="Package\Parent Firms Creation.Paths[Sort Output]"
+              endId="Package\Parent Firms Creation\Adding Company Type column - Hardcoded.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\Parent Firms Creation\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Parent Firms Creation.Paths[Sort Output1]"
+              endId="Package\Parent Firms Creation\List of companies with IDs if exists.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Parent Firms Creation\Sort by Name.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Parent Firms Creation"
+          TopLeft="84.5,25.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Parent Firms Creation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Parent Firms Creation\Sort by Name"
+          TopLeft="76.5555555555551,228.555555555556" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Parent Firms Creation\Account ID and Name"
+          TopLeft="52,139" />
+        <EdgeLayout
+          Id="Package\Parent Firms Creation.Paths[SalesforceSourceOutput]"
+          TopLeft="145.527777777778,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.555555555556"
+              Start="0,0"
+              End="0,40.055555555556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.055555555556" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Parent Firms Creation\Salesforce Destination 1"
+          TopLeft="765,250" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Parent Firms Creation\Azure Blob CSV File Source"
+          TopLeft="20,19" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Parent Firms Creation\Conditional Split"
+          TopLeft="321,17" />
+        <EdgeLayout
+          Id="Package\Parent Firms Creation.Paths[AzureCsvSourceOutput]"
+          TopLeft="226,39">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95,0"
+              Start="0,0"
+              End="87.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="87.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="35.75,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="378,42"
+          Id="Package\Parent Firms Creation\Replacing Nulls or Empty Strings in Company with Leagle entity"
+          TopLeft="418,75" />
+        <EdgeLayout
+          Id="Package\Parent Firms Creation.Paths[Case 1]"
+          TopLeft="476,38">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="131,37"
+              Start="0,0"
+              End="131,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="127,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="127,0"
+                    Point2="131,0"
+                    Point3="131,4" />
+                  <mssgle:LineSegment
+                    End="131,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="115.7819140625,-15.5537109375,30.436171875,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Parent Firms Creation\Sort"
+          TopLeft="621,168" />
+        <EdgeLayout
+          Id="Package\Parent Firms Creation.Paths[Derived Column Output]"
+          TopLeft="607,117">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63,51"
+              Start="0,0"
+              End="63,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="4,25.5" />
+                  <mssgle:LineSegment
+                    End="59,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59,25.5"
+                    Point2="63,25.5"
+                    Point3="63,29.5" />
+                  <mssgle:LineSegment
+                    End="63,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="23.5,30.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="284,42"
+          Id="Package\Parent Firms Creation\Adding Company Type column - Hardcoded"
+          TopLeft="325,227" />
+        <EdgeLayout
+          Id="Package\Parent Firms Creation.Paths[Sort Output]"
+          TopLeft="621,189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-154,38"
+              Start="0,0"
+              End="-154,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-150,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-150,0"
+                    Point2="-154,0"
+                    Point3="-154,4" />
+                  <mssgle:LineSegment
+                    End="-154,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="242,42"
+          Id="Package\Parent Firms Creation\List of companies with IDs if exists"
+          TopLeft="204,326" />
+        <EdgeLayout
+          Id="Package\Parent Firms Creation.Paths[Derived Column Output1]"
+          TopLeft="467,269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-142,57"
+              Start="0,0"
+              End="-142,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="-4,28.5" />
+                  <mssgle:LineSegment
+                    End="-138,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-138,28.5"
+                    Point2="-142,28.5"
+                    Point3="-142,32.5" />
+                  <mssgle:LineSegment
+                    End="-142,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Parent Firms Creation.Paths[Sort Output1]"
+          TopLeft="148.055555555555,270.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137.944444444445,55.444444444444"
+              Start="0,0"
+              End="137.944444444445,47.944444444444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.0481663929937" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.0481663929937"
+                    Point2="0,33.0481663929937"
+                    Point3="4,33.0481663929937" />
+                  <mssgle:LineSegment
+                    End="133.944444444445,33.0481663929937" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133.944444444445,33.0481663929937"
+                    Point2="137.944444444445,33.0481663929937"
+                    Point3="137.944444444445,37.0481663929937" />
+                  <mssgle:LineSegment
+                    End="137.944444444445,47.944444444444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="60.9722222222225,38.0481663929937,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Parent Firms Creation\Companies to be created"
+          TopLeft="529,323" />
+        <EdgeLayout
+          Id="Package\Parent Firms Creation.Paths[CompanyName]"
+          TopLeft="627,323">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="234,-31"
+              Start="0,0"
+              End="234,-23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-11.5"
+                    Point2="0,-15.5"
+                    Point3="4,-15.5" />
+                  <mssgle:LineSegment
+                    End="230,-15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="230,-15.5"
+                    Point2="234,-15.5"
+                    Point3="234,-19.5" />
+                  <mssgle:LineSegment
+                    End="234,-23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="82.9111328125,-10.5,68.177734375,11.4140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Parent Firms Creation.Paths[Merge Join Output]"
+          TopLeft="446,345.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83,0"
+              Start="0,0"
+              End="75.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="75.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="29.75,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

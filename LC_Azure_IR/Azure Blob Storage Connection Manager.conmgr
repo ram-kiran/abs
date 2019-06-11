@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Azure Blob Storage Connection Manager"
+  DTS:DTSID="{9CAF6FEA-A66E-4041-9E97-12A470BC3F65}"
+  DTS:CreationName="Azure Blob Storage (KingswaySoft)">
+  <DTS:ObjectData>
+    <ConnectionManager
+      ConnectionString="UploadChunkSize=&quot;0 MB&quot;;ProxyMode=NoProxy;ProxyUsername=;ProxyServer=;ProxyServerPort=0;UseAzureStorageEmulator=False;AccountName=lcatabsblobstorage;UseHTTPS=True;StorageEndpointsDomain=core.windows.net;Timeout=120;RetryOnIntermittentErrors=True">
+      <AccessKey
+        Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0dXL11BTiUSjSMYjFm14sgAAAAACAAAAAAADZgAAwAAAABAAAACir0xFuB64/v0Echip2OiYAAAAAASAAACgAAAAEAAAAJ5WOhIwuoecnMExtHuaPD6oAAAArxK4xvQA4PtRQB2uzG/MQKZpy6127j7dsXOwIttqIBn6xYqkyxUhnegaZCQ231JZgMgOk1ihbi6jTXZWQxQ3AlR8Wlj2UiDal+n4vbN60ekYL2UstEgJ/nDwc7VAmNwk+6jN+R8tNLxGmT11SwIPVFYditbbaILrtpwmrh+EAqMve/yj+sq2YvaOJdXy0ojfXglPzULysDzcdO7pnwB8hq9i62YEz3MwFAAAABfO4Qu1S4DdI6LrLbBSYZS6x/Y4</AccessKey>
+    </ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

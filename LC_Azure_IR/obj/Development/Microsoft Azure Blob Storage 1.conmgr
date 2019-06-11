@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Microsoft Azure Blob Storage 1"
+  DTS:DTSID="{87EEFCFE-D97A-4843-A88C-B00BDD317BD6}"
+  DTS:CreationName="ZS-AZURE-STORAGE">
+  <DTS:PropertyExpression
+    DTS:Name="AccountKey">@[$Project::MicrosoftAzureBlobStorage1_AccountKey]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="AccountName">@[$Project::MicrosoftAzureBlobStorage1_AccountName]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <ConnectionManager
+      ConnectionString="UseDevelopmentStorage=true"
+      Timeout="60"
+      RetryInterval="10"
+      MaxRetryOnError="3"
+      MaxParallelThreads="8"
+      ProgressUpdateInterval="4096">
+      <AccountKey
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0dXL11BTiUSjSMYjFm14sgAAAAACAAAAAAADZgAAwAAAABAAAAAf2yonlC0yPg8Oyhy/9IucAAAAAASAAACgAAAAEAAAAG3eieESeFKBnfzDBoW0ACSAAAAAUv06zIYadHKasY1XibWlm0G1UpfepaYqRdtj22AbEm+cv5gMHB3ISbj41h47NgQRXEwKoVxAUdKT+ijI5K+DGCRszS8DLeGeph+WfWHZCVUvrvek3lvfBrt2nIrE56oMwBlejOJ5C5TXvoJix4lvyhH6waOhdSrKVK4t75PZe+kUAAAAynqk1s3IwLrP9hm1jrtz4QwyqZ0=</AccountKey>
+    </ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

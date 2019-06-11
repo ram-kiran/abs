@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Salesforce 1"
+  DTS:DTSID="{C58BE939-34E8-4B72-9783-67038A558863}"
+  DTS:CreationName="ZS-SALESFORCE">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::Salesforce1_ConnectionString]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::Salesforce1_Password]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="SecurityToken">@[$Project::Salesforce1_SecurityToken]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="UserName">@[$Project::Salesforce1_UserName]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <ConnectionManager
+      ConnectionString="ServiceUrl=;UserName=ram.kiran@atlassystems.com.partial;Timeout=100;UseProxy=False;ProxyUrl=;UseProxyCreds=False;ProxyUserName=;DoNotUseDefaultProxy=False;UseClientCertificate=False;CertificatePath=;CertificateStorageType=CurrentUser;CertificateStoreName=My;CertificateThumbprint=;RetryMode=None;RetryCountMax=3;RetryWaitTimeMs=2000;RetryMultiplyWaitTime=False;RetryMessageList=;RetryStatusCodeList=;RetainSameConnection=True;ServiceType=Sandbox;AllOrNone=False;AllowFieldTruncation=False;AllowSaveOnDuplicates=False;UseWebProxy=False">
+      <Password
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0dXL11BTiUSjSMYjFm14sgAAAAACAAAAAAADZgAAwAAAABAAAACQbJDDPWkr4Le67DIWZp+AAAAAAASAAACgAAAAEAAAAD5/YnXpeUiR9FJAPlKLugQ4AAAA/DgHXONoro2MlZHEs/bJSH7Hr34M7CcOUcHXxCQEmDdHMJlVzafc/CycBG1Dsn00BMxFONFWM0sUAAAApDucpbnCIdrsZG6mLeRo9blmRA8=</Password>
+      <SecurityToken
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0dXL11BTiUSjSMYjFm14sgAAAAACAAAAAAADZgAAwAAAABAAAABnQF8DHyy3VntkjRB6oSX6AAAAAASAAACgAAAAEAAAAMT0AFRPNwZ7K8h/W7Gs8UJIAAAAedaGTtJy6xd4qYv96wT/IG0FkBUXR0PpQ073Pb/nzrzLoondDMYBT8bkP7krqWb0oxNw1bA/ndp+wMQQmFopvNwNZvup8LVIFAAAAAdVBhXuBepf7lRjA/pLcS2nd2lC</SecurityToken>
+    </ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
